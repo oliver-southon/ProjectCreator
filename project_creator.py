@@ -1,13 +1,21 @@
-#1. user enters name of project
-#2. determine type (python or web)
-#3. If python makes a dir with project name in Projects folder, plus start.py
-#3. If web, makes dir w/ projectname and files: scipt.js, index.html, styles.css
-
 import os
-import PySimpleGUI as sg
-FileName = input('Project name: ')
-print('Select file type:\n1. Python \n2. Web app')
-ProjectType = input('Type: ')
+import PySimpleGUIQt as sg
+
+sg.change_look_and_feel('DarkAmber') #colour
+
+#layout of window
+layout = [ 
+    [sg.Text('File Types')],
+    [sg.Text('1. Python file (start.py)')],
+    [sg.Text('2. Web app (script.js, index.html, styles.css)')],
+    [sg.Text('Project Name:'), sg.InputText()],
+    [sg.Text('File type: '), sg.InputText()],
+    [sg.Button('Ok'), sg.Button('Cancel')],
+]
+window = sg.Window('Peep', layout) #make the window
+
+event, values = window.read()
+FileName = values[0]
 
 def make_file(x):
     if x == '1':
@@ -19,8 +27,15 @@ def make_file(x):
         open(f"..\{FileName}\style.css", 'x')
         open(f"..\{FileName}\script.js", 'x')
 
-make_file(ProjectType)
-path = os.getcwd()
+count = 0
+while True:
+    if event in (None, 'Cancel'):
+        break
+    make_file(values[1])
+    count +=1
+    if count >= 1:
+        break
 
+window.close()
 #ProjectName = input("Enter the project name: ")
 
