@@ -4,7 +4,7 @@ block_cipher = None
 
 
 a = Analysis(['project_creator.py'],
-             pathex=['C:\\Users\\Oliver\\Projects\\ProjectCreator'],
+             pathex=['C:\\Users\\Oliver\\Projects\\Python\\ProjectCreator'],
              binaries=[],
              datas=[],
              hiddenimports=[],

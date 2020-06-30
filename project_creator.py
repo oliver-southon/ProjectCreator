@@ -5,18 +5,26 @@ def make_file_python(ProjectName): #function to make python project
     os.makedirs('../' + ProjectName)
     open(f"..\{ProjectName}\start.py", 'x')
 def make_file_webapp(ProjectName): #function to make webapp project
-    os.makedirs('../' + ProjectName)
-    open(f"..\{ProjectName}\index.html", 'x')
-    open(f"..\{ProjectName}\style.css", 'x')
-    open(f"..\{ProjectName}\script.js", 'x')
+    projectPath = '../../WebApps/' + ProjectName
+    os.makedirs(projectPath)
+    os.makedirs(projectPath + '/resources/css/img')
+    open(f"../../WebApps/{ProjectName}/resources/css/style.css", 'x')
+    os.makedirs(projectPath + '/resources/data')
+    os.makedirs(projectPath + '/resources/img')
+    os.makedirs(projectPath + '/resources/js')
+    os.makedirs(projectPath + '/vendors/css')
+    os.makedirs(projectPath + '/vendors/fonts')
+    os.makedirs(projectPath + '/vendors/js')
+    open(f"../../WebApps/{ProjectName}/index.html", 'x')
+    open(f"../../WebApps/{ProjectName}/style.css", 'x')
 
-sg.change_look_and_feel('DarkAmber') #colour
+sg.change_look_and_feel('DarkBlue1') #colour
 
 #layout of window
 layout = [
     [sg.Text('File Types')],
     [sg.Radio('Python file (start.py)', 1, key='-PY-')],
-    [sg.Radio('Web app (script.js, index.html, styles.css)', 1, key='-WEB-')],
+    [sg.Radio('Web app', 1, key='-WEB-')],
     [sg.Text('Project Name: '), sg.InputText(key='-NAME-')],
     [sg.Button('Ok'), sg.Button('Cancel')],
 ]
